@@ -1,0 +1,14 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url('../images/page_bg_blur03.jpg');
+}
+
+.login-card 
+{
+    position: relative;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+}

@@ -1,0 +1,126 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model Tuple<Obs.WebUI.Models.StudentAddViewModel, Obs.WebUI.Models.StudentListViewModel>
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/_TeacherLayout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12 ">
+            <ul class="nav nav-pills justify-content-center bg-dark " id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active text-white-50" id="pills-home-tab" data-toggle="pill" href="#Add" role="tab" aria-controls="pills-home" aria-selected="true">Öğenci ekle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white-50" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Öğrenci listele</a>
+                </li>
+            </ul>
+
+
+
+        </div>
+    </div>
+    <div class="row tab-content " id="pills-tabContent">
+        <div class="col-xl-12 tab-pane show active" id="Add" role="tabpanel">
+            <div class="container">
+                <div class="card card-register mx-auto mt-3 mb-3">
+                    <div class="card-header">Öğrenci kayıt</div>
+                    <div class="card-body">
+                        <form asp-controller="Teacher" asp-action="Add" method="post" role="form">
+                            <div class="form-group">
+                                <label for="tcNo">TC kimlik numarası</label>
+                                <input asp-for="Item1.Student.TcNo" class="form-control" placeholder="TC numarası">
+                                <span asp-validation-for="Item1.Student.TcNo"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Ad</label>
+                                <input asp-for="Item1.Student.Name" class="form-control" placeholder="Ad">
+                                <span asp-validation-for="Item1.Student.Name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="surname">Soyad</label>
+                                <input asp-for="Item1.Student.Surname" class="form-control" placeholder="Soyad">
+                                <span asp-validation-for="Item1.Student.Surname"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon numarası</label>
+                                <input asp-for="Item1.Student.PhoneNumber" class="form-control" placeholder="Telefon">
+                                <span asp-validation-for="Item1.Student.PhoneNumber"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input asp-for="Item1.Student.Email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Item1.Student.Email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerDate">Kayıt tarihi</label>
+                                <input asp-for="Item1.Student.RegisterDate" class="form-control" name="registerDate">
+                                <span asp-validation-for="Item1.Student.RegisterDate"></span>
+                            </div>
+                            <div class="form-group form-check">
+                                <input asp-for="Item1.Student.IsActive" class="form-check-input" id="active">
+                                <label class="form-check-label" for="active">Aktif mi</label>
+                            </div>
+                            <div class="form-group">
+                                <select asp-for="Item1.Student.FacultyName" class="custom-select" asp-items="@(new SelectList(Model.Item1.Faculties,"CategoryName"))"></select>
+                                <span asp-validation-for="Item1.Student.FacultyName"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <select asp-for="Item1.Student.ProgramName" class="custom-select" asp-items="@(new SelectList(Model.Item1.Programs,"ProgramName"))"></select>
+                                <span asp-validation-for="Item1.Student.ProgramName"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Kayıt ekle</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-12 my-3 tab-pane show" id="pills-profile" role="tabpanel">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Öğrenci numarası</td>
+                        <td>TC numarası</td>
+                        <td>Ad</td>
+                        <td>Soyad</td>
+                        <td>Telefon</td>
+                        <td>Email</td>
+                        <td>Kayıt tarihi</td>
+                        <td>Aktiflik</td>
+                        <td>Fakülte</td>
+                        <td>Bölüm</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var student in Model.Item2.Students)
+                    {
+                        <tr>
+                            <td>@student.TcNo</td>
+                            <td>@student.Name</td>
+                            <td>@student.Surname</td>
+                            <td>@student.PhoneNumber</td>
+                            <td>@student.Email</td>
+                            <td>@student.RegisterDate</td>
+                            <td>@student.IsActive</td>
+                            <td>@student.FacultyName</td>
+                            <td>@student.ProgramName</td>
+                            <td><button type="button" asp-controller="Teacher" asp-action="Update" asp-route-studentNumber="@student.StudentNumber" class="btn btn-outline-primary">Düzenle</button></td>
+                            <td><button type="button" class="btn btn-outline-danger" asp-controller="Teacher" asp-action="Delete" asp-route-studentNumber="@student.StudentNumber">Sil</button></td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,72 @@
+﻿@using System.Threading.Tasks
+@model Obs.WebUI.Models.StudentRegisterViewModel
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Öğrenci bilgi sistemi,admin paneli">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 my-3">
+                    <div class="card bg-light md-3 border-dark">
+                        <div class="card-header">
+                            Kayıt ol
+                        </div>
+                        <div class="card-body">
+                          <form asp-controller="StudentAccount" asp-action="Register" method="post" role="form">
+                              <div class="form-row my-3">
+                                  <div class="col">
+                                      <input class="form-control form-control-lg" type="text" asp-for="StudentNumber" placeholder="Öğrenci numarası"/>
+                                      <span asp-validation-for="StudentNumber"></span>
+                                  </div>
+                              </div>
+                              <div class="form-row my-3">
+                                  <div class="col">
+                                      <input class="form-control form-control-lg" type="text" asp-for="Email" placeholder="Email"/>
+                                      <span asp-validation-for="Email"></span>
+                                  </div>
+                              </div>
+                              <div class="form-row my-3">
+                                  <div class="col">
+                                      <input class="form-control form-control-lg" type="password" asp-for="Password" placeholder="Şifre" />
+                                      <span asp-validation-for="Password"></span>
+                                  </div>
+                              </div>
+                              <div class="form-row my-3">
+                                  <div class="col">
+                                      <button class="btn btn-lg btn-block btn-dark text-center" type="submit">Kayıt ol</button>
+                                  </div>
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/552e6a457c.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Obs.WebUI.Models
+{
+    public class StudentDetailViewModel
+    {
+        public string StudentNumber { get; set; }
+       
+    }
+}

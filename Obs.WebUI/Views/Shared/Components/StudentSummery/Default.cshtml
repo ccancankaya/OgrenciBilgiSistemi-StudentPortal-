@@ -1,0 +1,7 @@
+﻿@model Tuple<Obs.WebUI.Models.StudentDetailViewModel,Obs.WebUI.Models.StudentListViewModel>
+
+@if (!String.IsNullOrEmpty(@Model.Item1.StudentNumber))
+{
+    <a>Hoşgeldiniz @Model.Item1.StudentNumber.ToString()</a>
+    <a class="dropdown-item" asp-controller="StudentAccount" asp-action="LogOut">Logout</a>
+}
